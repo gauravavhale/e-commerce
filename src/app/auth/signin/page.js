@@ -43,19 +43,19 @@ const Signin = () => {
     <form className={`${styles.form}`} onSubmit={fnSignin}>
       <div className={`form-group`}>
         <label htmlFor="username">User Name</label>
-        <input required className='form-control mt-1 mb-3 border-end-0 border-top-0 border-start-0' onChange={fnUsername} value={username}  placeholder="Enter Username" id="username" type='text'/>
+        <input required className='form-control mt-2 mb-3 border-end-0 border-top-0 border-start-0' onChange={fnUsername} value={username}  placeholder="Enter Username" id="username" type='text'/>
       </div>
       <div className={`form-group`}>
         <label htmlFor="email">Email</label>
-        <input required className='form-control mt-1 mb-3 border-end-0 border-top-0 border-start-0' onChange={fnEmail} value={email}  placeholder="Enter Email" id="email" type='email'/>
+        <input required className='form-control mt-2 mb-3 border-end-0 border-top-0 border-start-0' onChange={fnEmail} value={email}  placeholder="Enter Email" id="email" type='email'/>
       </div>
       <div className='form-group'>
         <label htmlFor="password">Password</label>
-        <input required value={password} className='form-control mt-1 border-end-0 border-top-0 border-start-0' onChange={fnPassword} placeholder="Enter Password" id="password" type='password'/>
+        <input required value={password} className='form-control mt-2 border-end-0 border-top-0 border-start-0' onChange={fnPassword} placeholder="Enter Password" id="password" type='password'/>
       </div>
       <button className={` mt-3 w-100 ${styles.submit}`} type='submit' >Submit</button>
-      <div className='mt-5 '>
-        <button className='btn border-transparent'><Link className="text-decoration-none" href='/auth/login'>Existing User ? Login</Link></button>
+      <div className='mt-5 d-flex justify-content-center'>
+        <small><Link className="text-decoration-none" href='/auth/login'>Existing User ? Login</Link></small>
       </div>
     </form>
     </div> 

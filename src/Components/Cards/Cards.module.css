@@ -10,7 +10,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 16px;
-    margin-top: 16px;
-    margin: 12px;
+    gap: 18px;
+    margin-top: 20px;
 }
