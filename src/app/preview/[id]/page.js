@@ -15,7 +15,7 @@ const Preview = ({params}) => {
 
     useEffect(()=>{
       dispatch({type:"Cart",payload:cartProducts})
-    },[cartProducts])
+    },[cartProducts, dispatch])
     
     
     const addToCart = (product) => {
