@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import styles from './cart.module.css'
+import Image from 'next/image'
 
 const Cart = () => {
   // Access the cart data from the Redux store
@@ -49,8 +50,8 @@ const Cart = () => {
             return (
               <div className='card mb-3 shadow-sm' key={index}>
                 <div className='row g-0 align-items-center flex-row'>
-                  <div className='col-4 p-2'>
-                    <img src={product.image} width={100} height={100} className='img-fluid' style={{objectFit:"cover"}} alt={product.title} />
+                  <div className='col-4 p-2 d-flex justify-content-center'>
+                    <Image src={product.image} width={100} height={100} className='img-fluid' style={{objectFit:"cover"}} alt={product.title} />
                   </div>
                   <div className='col-8 d-flex flex-column align-items-start p-2'>
                     <h6 className='mb-1'>{product.title}</h6>
