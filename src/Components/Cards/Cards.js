@@ -59,7 +59,7 @@ export const Cards = ({products}) => {
   };
 
   return (
-    <div className="cards-container flex flex-wrap gap-4 m-3 mt-4 justify-content-center" >
+    <div className={`${styles.cards} cards-container`} >
     {products?.map((product)=>{
         return(
         <div className="card overflow-hidden" key={product.id} style={{ width:"300px", height:"485px"}}>
