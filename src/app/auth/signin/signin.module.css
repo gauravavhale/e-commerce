@@ -1,0 +1,17 @@
+.container {
+    max-height: 100vh;
+}
+.form{
+    margin-top: 40px;
+    background-color: white;
+    max-width: 500PX;
+    justify-content: center;
+    padding: 50px 50px 10px 50px;
+}
+.submit{
+    background-color: #fb641b;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
