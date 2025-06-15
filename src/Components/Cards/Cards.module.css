@@ -6,6 +6,15 @@
     border: none;
 }
 
+.cart:hover {
+  background-color: #157347;
+}
+
+.clicked {
+  transform: scale(0.95);
+  background-color: #14532d;
+}
+
 .cards{
     display: flex;
     flex-wrap: wrap;

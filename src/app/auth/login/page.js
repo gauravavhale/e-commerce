@@ -35,7 +35,6 @@ const Login = () => {
         <input required className='form-control mt-2 border-end-0 border-top-0 border-start-0' onChange={fnPassword} placeholder="Enter Password" id="#password" type='password'/>
       </div>
       <button id="#login" className={`mt-3 w-100 ${styles.submit}`} onClick={fnSubmit} >Login</button>
-      <p className='mt-4 mb-0' id="#error">Password must be atleast 8 letters</p>
       <div className='mt-5 d-flex justify-content-center align-items-center'>
         <small><Link className="text-decoration-none" href='/auth/signin'>New to SwiftCart ? Create an account</Link></small>
       </div>

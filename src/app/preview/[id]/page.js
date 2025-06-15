@@ -26,6 +26,13 @@ const Preview = ({params}) => {
     }
     return [...prev, product];
     });
+
+    const button = document.getElementById('add');
+    button.classList.add(styles.clicked)
+    button.innerText = 'Added'
+    setTimeout(()=>{
+      button.classList.remove(styles.clicked)
+    },200)
     }
 
     useEffect(()=>{
@@ -105,7 +112,7 @@ const Preview = ({params}) => {
       </div>
       <div>
         <p className="card-text text-success fw-bold mb-1">${product.price}</p>
-        <button className={`mb-2 ${styles.cart}`} onClick={()=>{addToCart(product)}}>Add to Cart</button>
+        <button id='add' className={`mb-2 ${styles.cart}`} onClick={()=>{addToCart(product)}}>Add to Cart</button>
         <div className="d-flex align-items-center">
           {renderStars(product.rating)}
           <span className="ms-2">({product.rating.rate}/5)</span>

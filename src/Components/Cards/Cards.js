@@ -20,6 +20,15 @@ export const Cards = ({products}) => {
       }
       return [...prev, product];
     });
+
+    const addButton = document.getElementById(`add-btn-${product.id}`);
+    if(addButton){
+      addButton.classList.add(styles.clicked);
+      addButton.innerText = "Added";
+      setTimeout(()=>{
+        addButton.classList.remove(styles.clicked);
+      },2000);
+    }
   }
 
 
@@ -68,7 +77,7 @@ export const Cards = ({products}) => {
         <h5 className="card-title text-truncate">{product.title}</h5>
         <p className="card-text overflow-hidden mb-1" style={{height:"75px"}}>{product.description}</p>
         <p className="card-text text-success fw-bold mb-1 pl-0">${product.price}</p>
-        <button className={` mb-2 ${styles.cart}`} onClick={()=>fnAddtoCart(product)}>Add to Cart</button>
+        <button id={`add-btn-${product.id}`} className={` mb-2 ${styles.cart}`} onClick={()=>fnAddtoCart(product)}>Add to Cart</button>
         <div className="d-flex align-items-center">
           {renderStars(product.rating)}
           <span className="ms-2">({product.rating.rate}/5)</span>
