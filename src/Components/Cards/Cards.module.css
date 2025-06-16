@@ -1,3 +1,17 @@
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.cardBody{
+    width: 300px;
+    height: 485px;
+}
+
+
 .cart{
     background-color: #186faf;
     padding: 5px 7px;
@@ -15,10 +29,6 @@
   background-color: #14532d;
 }
 
-.cards{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
-    margin-top: 20px;
+@media screen and (max-width: 768px) {
+    
 }

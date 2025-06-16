@@ -1,17 +1,17 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import styles from './preview.module.css'
 import Image from 'next/image'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Preview = ({params}) => {
 
     const {id} = params
 
     const dispatch = useDispatch()
+    const cartProducts = useSelector((state) => state.appReducer.CartData)
     
-    const [product, setProducts] = useState(null)
-    const [cartProducts,setCartProducts] = useState([])
+    const [product, setProducts] = React.useState(null)
 
     useEffect(()=>{
       dispatch({type:"Cart",payload:cartProducts})
@@ -19,20 +19,16 @@ const Preview = ({params}) => {
     
     
     const addToCart = (product) => {
-    setCartProducts(prev => {
-    // Prevent duplicates if needed
-    if (prev.find(item => item.id === product.id)) {
-      return prev;
-    }
-    return [...prev, product];
-    });
-
-    const button = document.getElementById('add');
-    button.classList.add(styles.clicked)
-    button.innerText = 'Added'
-    setTimeout(()=>{
-      button.classList.remove(styles.clicked)
-    },200)
+      // Add to Redux cart, prevent duplicates
+      if (!cartProducts.find(item => item.id === product.id)) {
+        dispatch({ type: 'Cart', payload: [...cartProducts, product] })
+      }
+      const button = document.getElementById('add');
+      button.classList.add(styles.clicked)
+      button.innerText = 'Added'
+      setTimeout(()=>{
+        button.classList.remove(styles.clicked)
+      },200)
     }
 
     useEffect(()=>{
