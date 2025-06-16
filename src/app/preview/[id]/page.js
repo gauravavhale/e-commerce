@@ -85,7 +85,7 @@ const Preview = ({params}) => {
   };
 
   return (
-    <div className=" d-flex justify-content-center align-content-center gap-4 m-3 mt-5">
+    <div className=" d-flex justify-content-center align-content-center gap-4 m-3 mt-5 pb-4">
     <div className="card overflow-hidden" key={product.id} style={{ maxWidth: "900px" }}>
     <div className="row g-0">
     {/* Image section */}
