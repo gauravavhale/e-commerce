@@ -27,7 +27,7 @@ export const Cards = ({products}) => {
       addButton.innerText = "Added";
       setTimeout(()=>{
         addButton.classList.remove(styles.clicked);
-      },2000);
+      },200);
     }
   }
 

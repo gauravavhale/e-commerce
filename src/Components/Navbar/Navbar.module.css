@@ -18,20 +18,6 @@
   color: white;
 }
 
-/* Collapse animation */
-.navbarCollapse {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 2s ease;
-}
-
-.navbarCollapse.show {
-  max-height: 500px; /* Adjust based on expected height */
-}
-
 @media (min-width: 992px) {
-  .navbarCollapse {
-    max-height: none !important;
-    overflow: visible !important;
-  }
+  
 }

@@ -3,10 +3,14 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './Navbar.module.css'
+import { useSelector } from 'react-redux'
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+
+  const data = useSelector((state) => state.appReducer.CartData)
+
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -29,25 +33,14 @@ export const Navbar = () => {
   }, [])
 
   return (
-    <nav className={`navbar navbar-expand-lg px-4 fixed-top ${styles.navbar}`}>
+    <nav className={`navbar navbar-expand-lg px-1 fixed-top ${styles.navbar}`}>
       <div className="container-fluid">
         
         {/* Logo */}
         <Link href="/" className="navbar-brand">
-          <Image src="/images/SwiftCart1.png" width={50} height={50} alt="SwiftCart Logo" />
+          <Image src="/images/SwiftCart1.png" width={50} height={50} alt="SwiftCart Logo" onClick={closeMenu}/>
         </Link>
 
-        {/* Toggle Button (hide on large screens) */}
-        {isMobile && (
-          <button
-            className="navbar-toggler"
-            type="button"
-            onClick={toggleMenu}
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-        )}
 
         {/* Collapsible Section */}
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`}>
@@ -65,17 +58,36 @@ export const Navbar = () => {
               <Link href="/categories/electronics" className="nav-link fw-bold text-dark" onClick={closeMenu}>ELECTRONICS</Link>
             </li>
           </ul>
+        </div>
 
-          {/* Right side login & cart */}
-          <div className="d-flex flex-column flex-lg-row align-items-center gap-4">
+        {/* Right side login & cart */}
+          <div className={`d-flex flex-row justify-content-center align-items-center gap-4`}>
             <Link title="Login" href="/auth/login" className={styles.btnLogin} onClick={closeMenu}>
               <i className="bi bi-person-circle fw-bold"></i> <b> Login</b>
             </Link>
-            <Link href="/cart" className="text-decoration-none text-dark" onClick={closeMenu}>
-              <i className="bi bi-cart me-2 fw-bold"></i><b>Cart</b>
+            <Link href="/cart" className="text-decoration-none text-dark me-2 position-relative" onClick={closeMenu}>
+              <i className="bi bi-cart3 me-2 fw-bold"></i><b>Cart</b>
+              {data.length > 0 && (
+                <span className={`position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger`}>
+                  {data.length}
+                </span>
+              )}
             </Link>
           </div>
-        </div>
+        
+
+          {/* Toggle Button (hide on large screens) */}
+        {isMobile && (
+          <button
+            className="navbar-toggler"
+            type="button"
+            onClick={toggleMenu}
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+        )}
+
       </div>
     </nav>
   )

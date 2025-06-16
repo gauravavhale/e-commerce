@@ -79,7 +79,7 @@ const Preview = ({params}) => {
         stars.push(
           <i
             key={i}
-            className="bi bi-star-fill text-muted"
+            className="bi bi-star-fill text-warning"
             style={{ marginRight: '2px' }}
           />
         );
