@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
         <title>SwiftCart</title>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name='theme-color' content='#06c1db'/>
-        <link rel="icon" href="/images/SwiftCart1.png"/>
+        <link rel="icon" href="/images/SwiftCart1.svg"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"/>
       </head>
