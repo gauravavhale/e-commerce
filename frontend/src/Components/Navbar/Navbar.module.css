@@ -1,0 +1,23 @@
+.navbar {
+  background-color: white;
+  padding: 10px 20px;
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
+}
+
+.btnLogin {
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: black;
+  text-decoration: none;
+}
+
+.btnLogin:hover {
+  background-color: blue;
+  color: white;
+}
+
+@media (min-width: 992px) {
+  
+}

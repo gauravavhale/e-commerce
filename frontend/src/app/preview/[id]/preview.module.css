@@ -1,0 +1,16 @@
+.cart{
+    background-color: #186faf;
+    padding: 5px 7px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+}
+
+.cart:hover{
+    background-color: #157347;
+}
+
+.clicked{
+  transform: scale(0.95);
+  background-color: #14532d;
+}
