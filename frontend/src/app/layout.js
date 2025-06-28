@@ -5,6 +5,7 @@ import { appStore, persistor } from '@/redux/store/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import Script from 'next/script';
+import { Toaster } from 'react-hot-toast';
 
 export default function RootLayout({ children }) {
   return (
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
       <body>
         <Provider store={appStore}>
           <PersistGate loading={null} persistor={persistor}>
+            <Toaster toastOptions={{  style: { background: '#333', color: '#fff', fontSize: '1rem',},success: {style: {background: '#198754',color: '#fff',},},error: {style: {background: '#dc3545',color: '#fff',},},}}/>
             <Navbar />
             {children}
           </PersistGate>

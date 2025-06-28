@@ -9,9 +9,11 @@ router.post('/login',async function(req,res,next){
         var result = await regUser.loginUser(data)
         res.json(result)
     } catch(e){
-        if(e.message === 'wrong email, password || User Not Registered'){
+        if(e.message === 'User Not Registered'){
             res.status(400).json({e:e.message})
-        } else{
+        } else if(e.message === "Wrong Password"){
+            res.status(400).json({e:e.message})
+        } else {
             res.status(500).json({e: 'Internal Server Error'})
         }
     }

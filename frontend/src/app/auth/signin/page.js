@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styles from './signin.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 const Signin = () => {
 
@@ -41,15 +42,15 @@ const Signin = () => {
     })
     const data = await res.json()
     if(data.acknowledged === true){
-        alert("Logged in Successfully")
+        toast.success("Registered Successfully")
         router.push('/auth/login')
     }
     else if(data.error === "User Already Exists" || data.message === "User Already Exists" ){
-      alert("User Already Exists")
+      toast("User Already Exists")
       router.push('/auth/login')
     }
     else {
-        alert( data.message || "Login Failed")
+        toast.error( data.message || "Login Failed")
     }
     } 
     catch(e){
@@ -61,6 +62,7 @@ const Signin = () => {
     return (
     <div className={`${styles.container} d-flex justify-content-center`} >
     <form className={`${styles.form}`} onSubmit={fnSignin}>
+      <h4 className='text-center mb-4'>Register User</h4>
       <div className={`form-group`}>
         <label htmlFor="username">User Name</label>
         <input required className='form-control mt-2 mb-3 border-end-0 border-top-0 border-start-0' onChange={fnUsername} value={username}  placeholder="Enter Username" id="username" type='text' autoComplete='username'/>

@@ -3,9 +3,12 @@ var getDBConnection = require ('../Common/getDbConnections')
 async function loginUserDao(data){
     var db = await getDBConnection()
     var collection = db.collection("users")
-    var result = await collection.findOne({email:data.email, password:data.password})
+    var result = await collection.findOne({email:data.email})
     if(!result){
-        throw new Error('wrong email, password || User Not Registered')
+        throw new Error('User Not Registered')
+    }
+    if(result.password !== data.password){
+        throw new Error('Wrong Password')
     }
     return result
 }

@@ -2,9 +2,10 @@
     max-height: 100vh;
 }
 .form{
-    margin-top: 60px;
+    margin-top: 80px;
     max-width: 500px;
     padding: 30px 30px 10px 30px;
+    background-color: #ffffff;
 }
 .submit{
     background-color: #fb641b;

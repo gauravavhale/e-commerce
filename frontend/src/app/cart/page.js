@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import styles from './cart.module.css'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import {toast} from 'react-hot-toast'
 
 const Cart = () => {
   const router = useRouter()
@@ -14,6 +15,7 @@ const Cart = () => {
   const dispatch = useDispatch()
 
   const handleRemove=(id)=>{
+    toast.success('Item Removed')
     const updatedCart = cartProducts.filter((product)=>product.id !== id)
     dispatch({type:"Cart",payload:updatedCart})
   }
@@ -22,10 +24,10 @@ const Cart = () => {
     const user = JSON.parse(localStorage.getItem('USer'))
     if(user && user.token){
       dispatch({type:"Cart",payload:[] });
-      alert('Order Placed Successfully')
+      toast.success('Order Placed')
       router.push('/')
     } else {
-      alert('Login to make a Order')
+      toast('Login to make a Order')
       router.push('/auth/login')
     }
   }
@@ -87,8 +89,8 @@ const Cart = () => {
             )
           }) }
         </div>
-        <div className="d-flex justify-content-between align-items-center px-3 py-2 border-top" style={{height:'60px', background:'#2874f0', position: 'sticky', bottom: 0, zIndex: 10}}>
-          <span className='text-white fw-bold'>Total : {cartProducts.reduce((total, product) => total + Number(product.price), 0).toFixed(2)}</span>
+        <div className="d-flex justify-content-end align-items-center px-5 py-2 border-top" style={{height:'60px', background:'#2874f0', position: 'sticky', bottom: 0, zIndex: 10}}>
+          <span className='text-white fw-bold me-4'>Total : {cartProducts.reduce((total, product) => total + Number(product.price), 0).toFixed(2)}</span>
           <button className='btn btn-warning ' onClick={fnPlaceOrder}>Place Order</button>
         </div>
       </div>

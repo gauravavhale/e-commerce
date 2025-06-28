@@ -5,6 +5,7 @@ import styles from './Cards.module.css';
 import Link from 'next/link';
 import { appStore } from '@/redux/store/store';
 import { useSelector, useDispatch } from 'react-redux';
+import {toast} from 'react-hot-toast';
 
 export const Cards = ({products}) => {
   // Use Redux cart state
@@ -22,6 +23,7 @@ export const Cards = ({products}) => {
     }
     const addButton = document.getElementById(`add-btn-${product.id}`);
     if(addButton){
+      toast.success("Added to cart")
       addButton.classList.add(styles.clicked);
       addButton.innerText = "Added";
       setTimeout(()=>{

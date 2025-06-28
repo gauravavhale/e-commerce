@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import styles from './preview.module.css'
 import Image from 'next/image'
 import { useDispatch, useSelector } from 'react-redux'
+import {toast} from 'react-hot-toast'
 
 const Preview = ({params}) => {
 
@@ -13,9 +14,9 @@ const Preview = ({params}) => {
     
     const [product, setProducts] = React.useState(null)
 
-    useEffect(()=>{
-      dispatch({type:"Cart",payload:cartProducts})
-    },[cartProducts, dispatch])
+    // useEffect(()=>{
+    //   dispatch({type:"Cart",payload:cartProducts})
+    // },[cartProducts, dispatch])
     
     
     const addToCart = (product) => {
@@ -25,6 +26,7 @@ const Preview = ({params}) => {
       }
       const button = document.getElementById('add');
       button.classList.add(styles.clicked)
+      toast.success('Added to cart')
       button.innerText = 'Added'
       setTimeout(()=>{
         button.classList.remove(styles.clicked)

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styles from './login.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import {toast} from 'react-hot-toast'
 
 const Login = () => {
 
@@ -40,16 +41,17 @@ const Login = () => {
       if(res.name && res.email && res.id && res.token){
         const expiry = Date.now() + 60 * 60 * 1000;
         localStorage.setItem('USer',JSON.stringify({...res,expiry}));
+        toast.success('Logged in')
         router.push('/')
-      } else if(res.e === 'wrong email, password || User Not Registered'){
-        alert(res.e)
+      } else if(res.e === 'User Not Registered'){
+        toast.error(res.e)
         router.push('/auth/signin')
-      } else {
-        alert(res.e)
+      } else if(res.e === 'Wrong Password') {
+        toast.error(res.e)
       }
     } catch(e){
       console.log(e);
-      alert("Incorrect Email Password");
+      toast.error(e)
     }
      
   }
@@ -58,6 +60,7 @@ const Login = () => {
   return (
     <div className={`${styles.container} d-flex justify-content-center`} >
     <form className={`${styles.form}`}>
+      <h4 className='text-center mb-4'>Login</h4>
       <div className={`form-group`}>
         <label for="number">Email</label>
         <input required className='form-control mt-2 mb-3 border-end-0 border-top-0 border-start-0' onChange={fnEmail}  placeholder="Enter Email" id="#email" type='email'/>
