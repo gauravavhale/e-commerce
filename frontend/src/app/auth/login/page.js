@@ -39,10 +39,10 @@ const Login = () => {
       })
       const res = await result.json()
       if(res.name && res.email && res.id && res.token){
-        const expiry = Date.now() + 60 * 60 * 1000;
-        localStorage.setItem('USer',JSON.stringify({...res,expiry}));
         toast.success('Logged in')
         router.push('/')
+        const expiry = Date.now() + 60 * 60 * 1000;
+        localStorage.setItem('USer',JSON.stringify({...res,expiry}));
       } else if(res.e === 'User Not Registered'){
         toast.error(res.e)
         router.push('/auth/signin')

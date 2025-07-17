@@ -61,15 +61,15 @@ const Cart = () => {
       </div>
     ) : (
       <div>
-        <div style={{maxHeight: '70vh', overflowY: 'auto'}} className='p-3'>
-          { cartProducts.map((product,index)=>{
+        <div style={{maxHeight: '70vh', overflowY: 'auto', maxWidth: '800px', margin: '0 auto',scrollbarWidth: 'none',msOverflowStyle: 'none'}} className='p-3'>
+          { cartProducts.map((product,index)=>{ 
             return (
               <div className='card mb-3 shadow-sm' key={index}>
                 <div className='row g-0 align-items-center flex-row'>
-                  <div className='col-4 p-2 d-flex justify-content-center'>
+                  <div className='col-6 p-2 d-flex justify-content-center'>
                     <Image src={product.image} width={100} height={100} className='img-fluid' style={{objectFit:"cover"}} alt={product.title} />
                   </div>
-                  <div className='col-8 d-flex flex-column align-items-start p-2'>
+                  <div className='col-6 d-flex flex-column align-items-start p-2'>
                     <h6 className='mb-1'>{product.title}</h6>
                     <div className='mb-1 text-success'>
                       {renderStars(product.rating)}

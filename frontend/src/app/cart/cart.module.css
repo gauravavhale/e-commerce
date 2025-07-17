@@ -4,3 +4,6 @@
     font-size: smaller;
     border: 1px solid #ccc;
 }
+.hide-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}

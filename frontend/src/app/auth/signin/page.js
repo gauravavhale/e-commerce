@@ -41,20 +41,19 @@ const Signin = () => {
      })
     })
     const data = await res.json()
-    if(data.acknowledged === true){
-        toast.success("Registered Successfully")
-        router.push('/auth/login')
-    }
-    else if(data.error === "User Already Exists" || data.message === "User Already Exists" ){
-      toast("User Already Exists")
-      router.push('/auth/login')
-    }
-    else {
-        toast.error( data.message || "Login Failed")
+    // console.log(id,name,email,token)
+    if(data && data.id && data.name && data.email && data.token){
+      toast.success('Signed in');
+      router.push('/');
+      const expiry = Date.now() + 60 * 60 * 1000; // 1 hour expiry
+      localStorage.setItem('USer', JSON.stringify({...data, expiry }));
+    } else if (data && data.error) {
+      toast.error(data.error);
+    } else {
+      toast.error('Registration failed');
     }
     } 
     catch(e){
-      console.log(e);
       alert(e);
     }
   }
