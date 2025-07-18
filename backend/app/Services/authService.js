@@ -10,9 +10,13 @@ async function loginUser(data){
     return result
 }
 
-function registerUser(data){
-    var res = authDao.regUserDao(data)
-    return res
+async function registerUser(data){
+    var user = await authDao.regUserDao(data)
+    if(user && user._id){
+        var token = jwt.sign(data, 'secretKey');
+        result = {name:user.username, email:user.email, id:user._id, token}
+    }
+    return result;
 }
 
 module.exports={

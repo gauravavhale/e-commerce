@@ -2,6 +2,7 @@
 import React from 'react'
 import useFetchProducts from '@/Hooks/useFetchProducts'
 import { Cards } from './Cards'
+import { SkeletonCards } from '@/Components/Skeleton/Skeleton'
 
 const ProductList = ({url}) => {
   
@@ -10,10 +11,8 @@ const ProductList = ({url}) => {
   return (
     <div>
         {loading ? (
-        <div className="d-flex justify-content-center align-items-center vh-100">
-          <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
-          </div>
+        <div className="container py-5">
+            <SkeletonCards count={6} />
         </div>
 
       ) : error ? (

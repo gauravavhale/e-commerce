@@ -40,23 +40,23 @@ const Signin = () => {
       }
      })
     })
+    
+
     const data = await res.json()
-    // console.log(id,name,email,token)
-    if(data && data.id && data.name && data.email && data.token){
-      toast.success('Signed in');
+    if(res.ok && data && data.name && data.email && data.id && data.token){
+      toast.success("Registered Successfully")
       router.push('/');
-      const expiry = Date.now() + 60 * 60 * 1000; // 1 hour expiry
+      const expiry = Date.now() + 60 * 60 * 1000; 
       localStorage.setItem('USer', JSON.stringify({...data, expiry }));
-    } else if (data && data.error) {
-      toast.error(data.error);
-    } else {
-      toast.error('Registration failed');
+    } else if ( !res.ok && data.e === 'User Already Registered') {
+      toast.error("User Already Registered")
+    } else{
+      toast.error("Unexpected error occurred")
     }
-    } 
-    catch(e){
-      alert(e);
+  } catch(e){
+      toast.error(e)
     }
-  }
+}
 
     return (
     <div className={`${styles.container} d-flex justify-content-center`} >

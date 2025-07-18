@@ -16,12 +16,17 @@ async function loginUserDao(data){
 async function regUserDao (data){
     var db = await getDBConnection()
     var collection = db.collection('users')
-    var existingUser =  await collection.findOne({email:data.email})
+    var existingUser = await collection.findOne({email:data.email})
     if(existingUser){
-         throw new Error("User Already Exists");
+        throw new Error('User Already Registered')
     }
     var result = await collection.insertOne(data)
-    return result
+    if(result){
+        var user = await collection.findOne({_id:result.insertedId})
+        return user;
+    } else {
+        throw new Error('User Registration Failed')
+    }
 }
 
 module.exports={
