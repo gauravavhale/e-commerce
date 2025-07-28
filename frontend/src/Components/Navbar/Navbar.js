@@ -33,62 +33,93 @@ export const Navbar = () => {
   }, [])
 
   return (
-    <nav className={`navbar navbar-expand-lg px-1 fixed-top ${styles.navbar}`}>
-      <div className="container-fluid">
-        
-        {/* Logo */}
-        <Link href="/" className="navbar-brand">
-          <Image src="/images/SwiftCart1.png" width={50} height={50} alt="SwiftCart Logo" onClick={closeMenu}/>
-        </Link>
+    <nav className={`navbar navbar-expand-lg px-3 fixed-top shadow-sm ${styles.navbar}`}>
+  <div className="container-fluid d-flex justify-content-between align-items-center flex-nowrap">
 
+    {/* Brand */}
+    <Link href="/" className="navbar-brand" onClick={closeMenu}>
+      <span className={styles.brandText}>SwiftCart</span>
+    </Link>
 
-        {/* Collapsible Section */}
-        <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`}>
-          <ul className="navbar-nav mx-auto mb-2 mb-lg-0 text-center gap-4">
-            <li className="nav-item">
-              <Link href="/categories/mens" className="nav-link fw-bold text-dark" onClick={closeMenu}>MEN</Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/categories/women" className="nav-link fw-bold text-dark" onClick={closeMenu}>WOMEN</Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/categories/jewelery" className="nav-link fw-bold text-dark" onClick={closeMenu}>JEWELERY</Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/categories/electronics" className="nav-link fw-bold text-dark" onClick={closeMenu}>ELECTRONICS</Link>
-            </li>
-          </ul>
-        </div>
+    {/* Toggle button for mobile */}
+    {isMobile && (
+      <>
+      <Link href="/cart" className="position-relative text-decoration-none text-dark" onClick={closeMenu}>
+                <i className="bi bi-cart3 me-1 fs-5"></i><b>Cart</b>
+                {data.length > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {data.length}
+                  </span>
+                )}
+              </Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        onClick={toggleMenu}
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      </>
+    )}
 
-        {/* Right side login & cart */}
-          <div className={`d-flex flex-row justify-content-center align-items-center gap-4`}>
-            <Link title="Login" href="/auth/login" className={styles.btnLogin} onClick={closeMenu}>
-              <i className="bi bi-person-circle fw-bold"></i> <b> Login</b>
+    {/* Collapsible menu */}
+    <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`}>
+      <ul className="navbar-nav gap-4 text-center mx-auto">
+        {[ 
+          { label: 'MEN', path: '/categories/mens' },
+          { label: 'WOMEN', path: '/categories/women' },
+          { label: 'JEWELERY', path: '/categories/jewelery' },
+          { label: 'ELECTRONICS', path: '/categories/electronics' }
+        ].map((item) => (
+          <li className="nav-item" key={item.label}>
+            <Link href={item.path} className="nav-link fw-semibold text-dark" onClick={closeMenu}>
+              {item.label}
             </Link>
-            <Link href="/cart" className="text-decoration-none text-dark me-2 position-relative" onClick={closeMenu}>
-              <i className="bi bi-cart3 me-2 fw-bold"></i><b>Cart</b>
-              {data.length > 0 && (
-                <span className={`position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger`}>
-                  {data.length}
-                </span>
-              )}
-            </Link>
-          </div>
-        
+          </li>
+        ))}
 
-          {/* Toggle Button (hide on large screens) */}
+        {/* Show Login & Cart in collapsed menu on mobile */}
         {isMobile && (
-          <button
-            className="navbar-toggler"
-            type="button"
-            onClick={toggleMenu}
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+          <>
+            <li className="nav-item mt-3">
+              <Link href="/auth/login" className={`${styles.btnLogin} d-inline-flex align-items-center`} onClick={closeMenu}>
+                <i className="bi bi-person-circle me-1"></i><b>Login</b>
+              </Link>
+            </li>
+            <li className="nav-item mt-2">
+              <Link href="/cart" className="position-relative text-decoration-none text-dark" onClick={closeMenu}>
+                <i className="bi bi-cart3 me-1 fs-5"></i><b>Cart</b>
+                {data.length > 0 && (
+                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {data.length}
+                  </span>
+                )}
+              </Link>
+            </li>
+          </>
         )}
+      </ul>
+    </div>
 
+    {/* Show Login & Cart on the right for desktop only */}
+    {!isMobile && (
+      <div className="d-flex align-items-center gap-3">
+        <Link href="/auth/login" className={`${styles.btnLogin} d-flex align-items-center`} onClick={closeMenu}>
+          <i className="bi bi-person-circle me-1"></i><b>Login</b>
+        </Link>
+        <Link href="/cart" className="position-relative text-decoration-none text-dark" onClick={closeMenu}>
+          <i className="bi bi-cart3 me-1 fs-5"></i><b>Cart</b>
+          {data.length > 0 && (
+            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {data.length}
+            </span>
+          )}
+        </Link>
       </div>
-    </nav>
+    )}
+  </div>
+</nav>
+
   )
 }

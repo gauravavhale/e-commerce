@@ -87,40 +87,57 @@ const Preview = ({params}) => {
   };
 
   return (
-    <div className=" d-flex justify-content-center align-content-center gap-4 m-3 mt-5 pb-4">
-    <div className="card overflow-hidden" key={product.id} style={{ maxWidth: "900px" }}>
+    <div className="d-flex justify-content-center align-items-center m-3 mt-5 pb-5">
+  <div
+    className="card shadow-lg border-0 overflow-hidden w-100"
+    style={{ maxWidth: "960px", borderRadius: "16px" }}
+  >
     <div className="row g-0">
-    {/* Image section */}
-    <div className="col-12 col-md-6 d-flex align-items-center justify-content-center" style={{ background: "#ffffff" }}>
-      <Image
-        src={product.image}
-        className="p-3"
-        width={400}
-        height={250}
-        alt={product.title}
-        style={{ objectFit: "contain", maxHeight: "300px" }}
-      />
-    </div>
-
-    {/* Info section */}
-    <div className="col-12 col-md-6 d-flex flex-column justify-content-between p-3">
-      <div>
-        <h5 className="card-title text-truncate">{product.title}</h5>
-        <p className="card-text">{product.description}</p>
+      {/* Image Section */}
+      <div
+        className="col-12 col-md-6 d-flex align-items-center justify-content-center"
+        style={{ backgroundColor: "#f8f9fa" }}
+      >
+        <Image
+          src={product.image}
+          alt={product.title}
+          width={400}
+          height={280}
+          className="p-4"
+          style={{ objectFit: "contain", maxHeight: "320px" }}
+        />
       </div>
-      <div>
-        <p className="card-text text-success fw-bold mb-1">${product.price}</p>
-        <button id='add' className={`mb-2 ${styles.cart}`} onClick={()=>{addToCart(product)}}>Add to Cart</button>
-        <div className="d-flex align-items-center">
-          {renderStars(product.rating)}
-          <span className="ms-2">({product.rating.rate}/5)</span>
+
+      {/* Info Section */}
+      <div className="col-12 col-md-6 p-4 d-flex flex-column justify-content-between">
+        <div>
+          <h4 className="fw-semibold text-dark mb-2 text-truncate" title={product.title}>
+            {product.title}
+          </h4>
+          <p className="text-muted small" style={{ maxHeight: "150px", overflowY: "auto" }}>
+            {product.description}
+          </p>
+        </div>
+
+        <div className="mt-3">
+          <p className="text-success fw-bold fs-5 mb-2">${product.price}</p>
+          <button
+            id="add"
+            className={`btn btn-dark w-100 py-2 mb-3 ${styles.cart}`}
+            onClick={() => addToCart(product)}
+          >
+            Add to Cart
+          </button>
+          <div className="d-flex align-items-center justify-content-center">
+            {renderStars(product.rating)}
+            <span className="ms-2 small text-muted">({product.rating.rate}/5)</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-  </div>
   )
 }
 

@@ -1,16 +1,26 @@
 .container {
-    max-height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
-.form{
-    margin-top: 80px;
-    max-width: 500PX;
-    padding: 30px 30px 10px 30px;
-    background-color: #ffffff;
+
+.form {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px 30px 10px 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.submit{
-    background-color: #fb641b;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    padding: 5px;
+
+.submit {
+  background-color: #fb641b;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+  width: 100%;
 }

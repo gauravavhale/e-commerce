@@ -59,27 +59,75 @@ const Signin = () => {
 }
 
     return (
-    <div className={`${styles.container} d-flex justify-content-center`} >
-    <form className={`${styles.form}`} onSubmit={fnSignin}>
-      <h4 className='text-center mb-4'>Register User</h4>
-      <div className={`form-group`}>
-        <label htmlFor="username">User Name</label>
-        <input required className='form-control mt-2 mb-3 border-end-0 border-top-0 border-start-0' onChange={fnUsername} value={username}  placeholder="Enter Username" id="username" type='text' autoComplete='username'/>
-      </div>
-      <div className={`form-group`}>
-        <label htmlFor="email">Email</label>
-        <input required className='form-control mt-2 mb-3 border-end-0 border-top-0 border-start-0' onChange={fnEmail} value={email}  placeholder="Enter Email" id="email" type='email' autoComplete='email'/>
-      </div>
-      <div className='form-group'>
-        <label htmlFor="password">Password</label>
-        <input required value={password} className='form-control mt-2 border-end-0 border-top-0 border-start-0' onChange={fnPassword} placeholder="Enter Password" id="password" type='password' autoComplete='current-password' />
-      </div>
-      <button className={` mt-3 w-100 ${styles.submit}`} type='submit' >Submit</button>
-      <div className='mt-5 d-flex justify-content-center'>
-        <small><Link className="text-decoration-none" href='/auth/login'>Existing User ? Login</Link></small>
-      </div>
-    </form>
-    </div> 
+    <div className="container d-flex justify-content-center align-items-center min-vh-100 px-3">
+  <form
+    className={`w-100 p-4 rounded shadow ${styles.form}`}
+    style={{ maxWidth: '420px' }}
+    onSubmit={fnSignin}
+  >
+    <h4 className="text-center mb-4 fw-bold">Register User</h4>
+
+    {/* Username Field */}
+    <div className="form-group mb-3">
+      <label htmlFor="username" className="form-label">User Name</label>
+      <input
+        required
+        type="text"
+        id="username"
+        autoComplete="username"
+        className="form-control border-0 border-bottom rounded-0 shadow-none"
+        placeholder="Enter Username"
+        value={username}
+        onChange={fnUsername}
+      />
+    </div>
+
+    {/* Email Field */}
+    <div className="form-group mb-3">
+      <label htmlFor="email" className="form-label">Email</label>
+      <input
+        required
+        type="email"
+        id="email"
+        autoComplete="email"
+        className="form-control border-0 border-bottom rounded-0 shadow-none"
+        placeholder="Enter Email"
+        value={email}
+        onChange={fnEmail}
+      />
+    </div>
+
+    {/* Password Field */}
+    <div className="form-group mb-3">
+      <label htmlFor="password" className="form-label">Password</label>
+      <input
+        required
+        type="password"
+        id="password"
+        autoComplete="new-password"
+        className="form-control border-0 border-bottom rounded-0 shadow-none"
+        placeholder="Enter Password"
+        value={password}
+        onChange={fnPassword}
+      />
+    </div>
+
+    {/* Submit Button */}
+    <button type="submit" className={`btn w-100 mt-3 ${styles.submit}`}>
+      Submit
+    </button>
+
+    {/* Redirect Link */}
+    <div className="mt-4 text-center">
+      <small>
+        <Link href="/auth/login" className="text-decoration-none">
+          Existing User? <strong>Login</strong>
+        </Link>
+      </small>
+    </div>
+  </form>
+</div>
+ 
   )
 }
 

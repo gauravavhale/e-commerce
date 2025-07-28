@@ -69,24 +69,59 @@ export const Cards = ({products}) => {
   };
 
   return (
-    <div className={`${styles.cards} cards-container pt-2 pb-4`} >
-    {products?.map((product)=>{
-        return(
-        <div className="card overflow-hidden" key={product.id} style={{ width:"300px", height:"485px"}}>
-          <Link href={`/preview/${product.id}`}><Image src={product.image} className="card-img-top p-4 " width={288} height={240} alt={product.title} /></Link>
-          <div className="card-body " style={{height:"200px"}}>
-          <h5 className="card-title text-truncate">{product.title}</h5>
-          <p className="card-text overflow-hidden mb-1" style={{height:"75px"}}>{product.description}</p>
-          <p className="card-text text-success fw-bold mb-1 pl-0">${product.price}</p>
-          <button id={`add-btn-${product.id}`} className={` mb-2 ${styles.cart}`} onClick={()=>fnAddtoCart(product)}>Add to Cart</button>
-          <div className="d-flex align-items-center">
+    <div className={`${styles.cards} cards-container pt-3 pb-5 d-flex flex-wrap gap-4 justify-content-center`}>
+  {products?.map((product) => {
+    return (
+      <div
+        className="card border-0 shadow-sm overflow-hidden"
+        key={product.id}
+        style={{ width: '300px', height: '500px', borderRadius: '16px' }}
+      >
+        <Link href={`/preview/${product.id}`} className="text-decoration-none">
+          <Image
+            src={product.image}
+            className="card-img-top p-3"
+            width={288}
+            height={240}
+            alt={product.title}
+            style={{ objectFit: 'contain', height: '240px' }}
+          />
+        </Link>
+        <div className="card-body d-flex flex-column justify-content-between px-3" style={{ height: '240px' }}>
+          <div>
+            <h6 className="card-title fw-semibold text-dark text-truncate" title={product.title}>
+              {product.title}
+            </h6>
+            <p
+              className="card-text small text-muted"
+              style={{
+                maxHeight: '60px',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              {product.description}
+            </p>
+            <p className="card-text text-success fw-bold fs-6 mt-1">${product.price}</p>
+          </div>
+          <div>
+            <button
+              id={`add-btn-${product.id}`}
+              className={`btn btn-dark w-100 py-2 mt-1 ${styles.cart}`}
+              onClick={() => fnAddtoCart(product)}
+            >
+              Add to Cart
+            </button>
+            <div className="d-flex align-items-center justify-content-center mt-2">
               {renderStars(product.rating)}
-              <span className="ms-2">({product.rating.rate}/5)</span> 
+              <span className="ms-2 small text-muted">({product.rating.rate}/5)</span>
+            </div>
           </div>
-          </div>
-       </div>
-        )
-    })}
-    </div>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
   ); 
 };

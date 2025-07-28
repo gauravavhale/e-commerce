@@ -58,23 +58,50 @@ const Login = () => {
 
 
   return (
-    <div className={`${styles.container} d-flex justify-content-center`} >
-    <form className={`${styles.form}`}>
-      <h4 className='text-center mb-4'>Login</h4>
-      <div className={`form-group`}>
-        <label for="number">Email</label>
-        <input required className='form-control mt-2 mb-3 border-end-0 border-top-0 border-start-0' onChange={fnEmail}  placeholder="Enter Email" id="#email" type='email'/>
-      </div>
-      <div className='form-group'>
-        <label for="password">Password</label>
-        <input required className='form-control mt-2 border-end-0 border-top-0 border-start-0' onChange={fnPassword} placeholder="Enter Password" id="#password" type='password'/>
-      </div>
-      <button id="#login" className={`mt-3 w-100 ${styles.submit}`} onClick={fnSubmit} >Login</button>
-      <div className='mt-5 d-flex justify-content-center align-items-center'>
-        <small><Link className="text-decoration-none" href='/auth/signin'>New to SwiftCart ? Create an account</Link></small>
-      </div>
-    </form>
+   <div className={`${styles.container}`}>
+  <form className={styles.form} onSubmit={fnSubmit}>
+    <h4 className="text-center mb-4">Login</h4>
+    
+    <div className="form-group mb-3">
+      <label htmlFor="email">Email</label>
+      <input
+        required
+        type="email"
+        className="form-control mt-2 border-0 border-bottom rounded-0"
+        onChange={fnEmail}
+        placeholder="Enter Email"
+        id="email"
+      />
     </div>
+
+    <div className="form-group mb-3">
+      <label htmlFor="password">Password</label>
+      <input
+        required
+        type="password"
+        className="form-control mt-2 border-0 border-bottom rounded-0"
+        onChange={fnPassword}
+        placeholder="Enter Password"
+        id="password"
+      />
+    </div>
+
+    <button className={styles.submit} type="submit">
+      Login
+    </button>
+
+    <div className="mt-4 text-center">
+      <small>
+        <Link href="/auth/signin" className="text-decoration-none">
+          New to SwiftCart? Create an account
+        </Link>
+      </small>
+    </div>
+  </form>
+</div>
+
+
+
   )
 }
 

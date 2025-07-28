@@ -1,23 +1,73 @@
-.navbar {
-  background-color: white;
-  padding: 10px 20px;
-  border-bottom: 1px solid #eee;
-  z-index: 1000;
+.brandText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  transition: opacity 0.3s ease-in-out;
 }
 
+.brandText:hover {
+  opacity: 0.8;
+}
+
+/* Responsive adjustment */
+@media (max-width: 575.98px) {
+  .brandText {
+    font-size: 1.2rem; /* smaller on extra small screens */
+  }
+}
+
+
+.navbar {
+  background-color: #ffffff;
+  padding: 12px 24px;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 1050;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Login Button */
 .btnLogin {
-  background-color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: black;
+  background-color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  color: #000;
   text-decoration: none;
+  transition: 0.3s ease-in-out;
 }
 
 .btnLogin:hover {
-  background-color: blue;
-  color: white;
+  background-color: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
 }
 
-@media (min-width: 992px) {
-  
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+  .navbar {
+    padding: 10px 16px;
+  }
+
+  .navbar-collapse {
+    background-color: #ffffff;
+    padding: 20px 0;
+  }
+
+  .nav-link {
+    font-size: 18px;
+  }
+
+  .btnLogin {
+    font-size: 16px;
+  }
 }
