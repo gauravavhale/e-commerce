@@ -59,7 +59,7 @@ const Signin = () => {
 }
 
     return (
-    <div className="container d-flex justify-content-center align-items-center min-vh-100 px-3">
+    <div className="container d-flex justify-content-center align-items-center h-100 px-3">
   <form
     className={`w-100 p-4 rounded shadow ${styles.form}`}
     style={{ maxWidth: '420px' }}
