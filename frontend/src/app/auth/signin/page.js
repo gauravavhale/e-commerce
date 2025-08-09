@@ -113,7 +113,7 @@ const Signin = () => {
     </div>
 
     {/* Submit Button */}
-    <button type="submit" className={`btn w-100 mt-3 ${styles.submit}`}>
+    <button type="submit" className={`${styles.submitbtn}`}>
       Submit
     </button>
 

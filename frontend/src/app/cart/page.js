@@ -83,7 +83,7 @@ const Cart = () => {
       scrollbarWidth: 'none',
       msOverflowStyle: 'none'
     }}
-    className="p-3"
+    className="p-3 mt-4"
   >
     {cartProducts.map((product, index) => (
       <div className="card mb-3 shadow-sm border-0" key={index} style={{ borderRadius: '12px' }}>
